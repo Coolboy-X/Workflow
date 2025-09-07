@@ -1,0 +1,5 @@
+{
+  "name": "Genshin Impact Code Compass",
+  "description": "A web application that automatically aggregates, filters, and displays the latest Genshin Impact redemption codes with features like countdown timers, one-click copy, and auto-redeem links.",
+  "requestFramePermissions": []
+}

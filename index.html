@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Genshin Impact Code Compass</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a202c">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+<script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.1.1/",
+    "react/": "https://aistudiocdn.com/react@^19.1.1/",
+    "react": "https://aistudiocdn.com/react@^19.1.1",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.16.0",
+    "firebase/app": "https://aistudiocdn.com/firebase@^12.2.1/app",
+    "firebase/database": "https://aistudiocdn.com/firebase@^12.2.1/database",
+    "firebase/": "https://aistudiocdn.com/firebase@^12.2.1/"
+  }
+}
+</script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          'sans': ['Lato', 'sans-serif'],
+          'serif': ['Cinzel', 'serif'],
+        },
+        colors: {
+          'genshin-gold': {
+            light: '#F5E4C3',
+            DEFAULT: '#D8B884',
+            dark: '#AD8E59'
+          },
+          'teyvat-blue': {
+            light: '#2C3D5E',
+            DEFAULT: '#1E2A44',
+            dark: '#121A2A'
+          }
+        },
+        keyframes: {
+          'fade-in': {
+            '0%': { opacity: '0', transform: 'translateY(10px)' },
+            '100%': { opacity: '1', transform: 'translateY(0)' },
+          },
+        },
+        animation: {
+          'fade-in': 'fade-in 0.5s ease-out forwards',
+        },
+      }
+    }
+  }
+</script>
+<style>
+  body {
+    background-color: #0d121c;
+    overflow-y: scroll;
+    overflow-x: hidden; /* Prevent horizontal scrolling from scaled background */
+  }
+  #app-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Starry_night_sky.jpg/1280px-Starry_night_sky.jpg');
+    background-size: cover;
+    background-position: center;
+    filter: blur(4px) brightness(0.4);
+    transform: scale(1.1);
+    z-index: -1;
+  }
+</style>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body class="font-sans text-genshin-gold-light">
+  <div id="app-background"></div>
+  <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js').then(registration => {
+          console.log('SW registered: ', registration);
+        }).catch(registrationError => {
+          console.log('SW registration failed: ', registrationError);
+        });
+      });
+    }
+  </script>
+</body>
+</html>
